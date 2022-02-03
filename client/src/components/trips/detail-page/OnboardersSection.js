@@ -1,44 +1,24 @@
 import React from 'react';
 
-function OnboardersSection() {
+function OnboardersSection({props}) {
   return (
-      <section id="onboarders">
-      <div class="container my-5 w-75">
-        <hr />
-        <h1 class="display-4">Onboarders</h1>
-        <p class="text-muted mb-5">
-          This is a close approximation for the total expenses.
+    <section id="onboarders">
+      <div className="container my-5 w-75 p-5 bg-white">
+        <h1 className="display-4">Onboarders</h1>
+        <p className="text-muted mb-5">
+          The people you will be touring with!
         </p>
 
-        <ul class="list-group list-group-flush">
-          <!-- Members -->
-          <li
-            class="list-group-item d-flex justify-content-between align-items-center"
-          >
-            <a href="#" class="text-dark">Captain America</a>
-            <span class="badge badge-success">Confirm</span>
-          </li>
-          <li
-            class="list-group-item d-flex justify-content-between align-items-center"
-          >
-            <a href="#" class="text-dark">Spiderman</a>
-            <span class="badge badge-success">Confirm</span>
-          </li>
-          <li
-            class="list-group-item d-flex justify-content-between align-items-center"
-          >
-            <a href="#" class="text-dark">DeadPool</a>
-            <span class="badge badge-danger">pending</span>
-          </li>
-        </ul>
-        <ul class="list-group list-group-flush">
-          <a
-            href="#"
-            class="list-group-item text-dark d-flex justify-content-between align-items-center"
-          >
-            Selvamani
-            <span class="badge badge-warning">Interested</span>
-          </a>
+        <ul className="list-group list-group-flush">
+          {/* <!-- Members --> */}
+          {props.map(row => {return (
+            <li className="list-group-item d-flex justify-content-between align-items-center">
+              <a href="#" className="text-dark">
+                {row.name}
+              </a>
+              <span className={`badge badge-${row.color}`}>{row.status}</span>
+            </li>
+          );})}
         </ul>
       </div>
     </section>

@@ -9,6 +9,7 @@ import About from './components/layout/About';
 import TripsSection from './components/trips/TripsSection';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
+import TripDetail from './components/trips/TripDetail';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route
+            exact
             path="/"
             element={
               <div>
@@ -27,7 +29,8 @@ function App() {
               </div>
             }
           />
-          <Route path="/about" element={<About />} />
+          <Route exact path="/about" element={<About />} />
+          <Route exact path="/trips" element={<TripDetail />} />
         </Routes>
       </BrowserRouter>
     </Provider>

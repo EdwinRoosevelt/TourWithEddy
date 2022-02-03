@@ -1,10 +1,9 @@
 import React from 'react';
 
-function ExpensesSection() {
+function ExpensesSection({props}) {
   return (
     <section id="expenses">
-      <div class="container mt-5 w-75">
-        <hr />
+      <div class="container mt-5 w-75 p-5 bg-white">
         <h1 class="display-4">Expenses</h1>
         <p class="text-muted mb-5">
           This is a close approximation for the total expenses.
@@ -22,24 +21,19 @@ function ExpensesSection() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td scope="row">1</td>
-              <td>
-                <strong>Hotel</strong>
-                <p class="text-muted">L'amby Bay</p>
-              </td>
-              <td>₹1,000 x 2 nights</td>
-              <td>₹2,000</td>
-            </tr>
-            <tr>
-              <td scope="row">2</td>
-              <td>
-                <strong>Train Ticket</strong>
-                <p class="text-muted">Kovai Express</p>
-              </td>
-              <td>₹700 x 2 way</td>
-              <td>₹1,400</td>
-            </tr>
+            {props.list.map(row => {
+              return (
+                <tr>
+                  <td scope="row">{row.no}</td>
+                  <td>
+                    <strong>{row.title}</strong>
+                    <p class="text-muted">{row.description}</p>
+                  </td>
+                  <td>₹{row.price}</td>
+                  <td>₹{row.total}</td>
+                </tr>
+              );
+            })};
             <tr>
               <td scope="row"></td>
               <td>
@@ -47,7 +41,7 @@ function ExpensesSection() {
               </td>
               <td></td>
               <td>
-                <strong>₹3,400</strong>
+                <strong>₹{props.total}</strong>
               </td>
             </tr>
           </tbody>

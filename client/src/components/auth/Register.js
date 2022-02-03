@@ -38,7 +38,7 @@ function Register() {
 
               {/* <!-- Email --> */}
               <div className="input-group mb-3">
-                <input type="email" className="form-control" placeholder="Email" />
+                <input type="email" className="form-control is-valid" placeholder="Email" />
                 <div className="valid-feedback">Looks good!</div>
                 <div className="invalid-feedback">Enter a valid email</div>
               </div>

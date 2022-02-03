@@ -47,14 +47,16 @@ function Login() {
                 </div>
                 <input
                   type="email"
-                  className="form-control is-valid"
+                  className={`form-control ${
+                    loginAlerts.isEmailValid ? "" : "is-invalid"
+                  }`}
                   placeholder="Enter Email"
+                  required
                   name="email"
                   value={form.email}
                   onChange={onChangeHandler}
                 />
-                {/* <div className="valid-feedback">Looks good!</div>
-                <div className="invalid-feedback">Enter a valid email</div> */}
+                <div className="invalid-feedback">Email doesn't exist</div>
               </div>
               {/* <!-- Password --> */}
               <div className="input-group">
@@ -65,14 +67,16 @@ function Login() {
                 </div>
                 <input
                   type="password"
-                  className="form-control is-valid"
+                  className={`form-control ${
+                    loginAlerts.isPasswordValid ? "" : "is-invalid"
+                  }`}
                   placeholder="***********"
+                  required
                   name="password"
                   value={form.password}
                   onChange={onChangeHandler}
                 />
-                {/* <div className="valid-feedback">Looks good!</div>
-                <div className="invalid-feedback">Enter a valid email</div> */}
+                <div className="invalid-feedback">Password Invalid</div>
               </div>
 
               <p className="text-muted mt-2">
@@ -95,17 +99,21 @@ function Login() {
               </div> */}
             </div>
             <div className="p-3">
-              <button
-                type="submit"
-                className="btn btn-success btn-block shadow"
-              >
-                {!loginAlerts.isLoading && "Login"}
-                {loginAlerts.isLoading && (
+              {!loginAlerts.isLoading && (
+                <button
+                  type="submit"
+                  className="btn btn-success btn-block shadow"
+                >
+                  Login
+                </button>
+              )}
+              {loginAlerts.isLoading && (
+                <div className="btn btn-success btn-block shadow">
                   <div className="spinner-grow" role="status">
                     <span className="sr-only">Loading...</span>
                   </div>
-                )}
-              </button>
+                </div>
+              )}
             </div>
           </form>
 
